@@ -1,0 +1,68 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+def config = rootProject.ext
+android {
+    compileSdkVersion config.android.compileSdkVersion
+    buildToolsVersion config.android.buildToolsVersion
+
+
+    defaultConfig {
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+        minSdkVersion config.android.minSdkVersion
+        targetSdkVersion config.android.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+    dataBinding {
+        enabled true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api config.dependencies["kotlin"]
+    api config.dependencies["core-ktx"]
+    annotationProcessor config.dependencies["arouter-compiler"]
+    api config.dependencies["arouter-api"]
+    api config.dependencies["appcompat"]
+    api config.dependencies["recyclerview"]
+    api config.dependencies["constraintlayout"]
+    api config.dependencies["retrofit"]
+    api config.dependencies["converter-gson"]
+    api config.dependencies["utilcode"]
+    api config.dependencies["glide"]
+    api config.dependencies["lottie"]
+    api config.dependencies["lifecycle"]
+    api config.dependencies["lifecycle-livedata-ktx"]
+    api config.dependencies["lifecycle-viewmodel-ktx"]
+    api config.dependencies["material"]
+    api config.dependencies["viewpager2"]
+    api config.dependencies["koin-android"]
+    api config.dependencies["koin-androidx-scope"]
+    api config.dependencies["koin-androidx-viewmodel"]
+    api config.dependencies["navigation-fragment-ktx"]
+    api config.dependencies["navigation-ui-ktx"]
+    api config.dependencies["logging-interceptor"]
+    api config.dependencies["PersistentCookieJar"]
+    api config.dependencies["BaseRecyclerViewAdapterHelper"]
+
+}
