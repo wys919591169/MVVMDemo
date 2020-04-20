@@ -17,7 +17,7 @@ abstract class BaseVMFragment<VM : BaseViewModel>(useDataBinding: Boolean = true
 
     private val _useBinding = useDataBinding
     private lateinit var mBinding: ViewDataBinding
-    private lateinit var mViewModel: VM
+    protected lateinit var mViewModel: VM
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return if (_useBinding) {
