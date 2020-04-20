@@ -1,4 +1,4 @@
-package com.wys.home.api
+package com.wys.base_lib.base
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.coroutineScope
@@ -10,7 +10,7 @@ import java.io.IOException
  */
 open class BaseRepository {
 
-    suspend fun <T : Any> apiCall(call: suspend () -> WanResponse<T>): WanResponse<T> {
+    suspend fun <T : Any> apiCall(call: suspend () -> BaseResponse<T>): BaseResponse<T> {
         return call.invoke()
     }
 
@@ -23,7 +23,7 @@ open class BaseRepository {
         }
     }
 
-    suspend fun <T : Any> executeResponse(response: WanResponse<T>, successBlock: (suspend CoroutineScope.() -> Unit)? = null,
+    suspend fun <T : Any> executeResponse(response: BaseResponse<T>, successBlock: (suspend CoroutineScope.() -> Unit)? = null,
                                           errorBlock: (suspend CoroutineScope.() -> Unit)? = null): com.wys.base_lib.Result<T> {
         return coroutineScope {
             if (response.errorCode == -1) {

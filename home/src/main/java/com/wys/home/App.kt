@@ -10,8 +10,9 @@ import org.koin.core.context.startKoin
 import kotlin.properties.Delegates
 
 /**
- * Created by luyao
- * on 2018/3/13 13:35
+ *  author : wys
+ *  date : 2020/4/15 18:28
+ *  description :
  */
 class App : Application() {
 
